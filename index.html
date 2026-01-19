@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Cloud Free Treo Game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: radial-gradient(circle at top, #1e3a8a, #020617);
+      color: #e5e7eb;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 900px;
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: 18px;
+      padding: 30px;
+      box-shadow: 0 25px 70px rgba(0,0,0,0.7);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .cloud-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 12px;
+      margin-bottom: 25px;
+    }
+
+    .cloud {
+      background: #0f172a;
+      border-radius: 12px;
+      padding: 12px;
+      text-align: center;
+      border: 1px solid #1e293b;
+    }
+
+    .cloud span {
+      display: block;
+      margin-top: 6px;
+      font-size: 12px;
+      color: #94a3b8;
+    }
+
+    .key-box {
+      background: #020617;
+      border-radius: 14px;
+      padding: 25px;
+      text-align: center;
+      border: 1px solid #1e293b;
+    }
+
+    .warning {
+      color: #a78bfa;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .key-btn {
+      margin: 20px auto;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #6366f1, #22d3ee);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s;
+      user-select: none;
+    }
+
+    .key-btn:hover {
+      transform: scale(1.1);
+    }
+
+    .note {
+      font-size: 12px;
+      color: #94a3b8;
+    }
+
+    .guide {
+      margin-top: 25px;
+      font-size: 14px;
+    }
+
+    .guide ol {
+      padding-left: 20px;
+    }
+
+    .contact {
+      margin-top: 25px;
+      font-size: 14px;
+      color: #93c5fd;
+      text-align: center;
+    }
+
+    .contact span {
+      color: #e5e7eb;
+    }
+
+    /* ===== POPUP ===== */
+
+    #popupKey {
+      display: none;
+    }
+
+    .popup-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.65);
+      z-index: 999;
+    }
+
+    .popup-box {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: linear-gradient(180deg, #0f172a, #020617);
+      width: 90%;
+      max-width: 420px;
+      padding: 25px;
+      border-radius: 16px;
+      color: #e5e7eb;
+      z-index: 1000;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+    }
+
+    .popup-box h2 {
+      font-size: 16px;
+      margin-bottom: 20px;
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    .go-key {
+      display: block;
+      text-align: center;
+      padding: 12px;
+      border-radius: 12px;
+      background: linear-gradient(90deg, #6366f1, #22d3ee);
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .desc {
+      font-size: 13px;
+      color: #94a3b8;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .discord p {
+      font-size: 13px;
+      margin: 6px 0;
+    }
+
+    .discord a {
+      color: #38bdf8;
+      text-decoration: none;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      background: none;
+      border: none;
+      color: #e5e7eb;
+      font-size: 18px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <h1>☁️ Website lấy FREE các Cloud để treo game 🎮</h1>
+
+    <div class="cloud-list">
+      <div class="cloud">Ugphone<span>4 giờ</span></div>
+      <div class="cloud">Ugphone<span>7 ngày</span></div>
+      <div class="cloud">Vmos<span>1 ngày</span></div>
+      <div class="cloud">Vmos<span>6 tiếng</span></div>
+      <div class="cloud">Vsphone<span>1 ngày</span></div>
+      <div class="cloud">Vsphone<span>3 giờ</span></div>
+    </div>
+
+    <div class="key-box">
+      <div class="warning">⚠️ Bạn cần phải lấy key để tới web chính thức</div>
+      <div>Bấm vào nút bên dưới để lấy link & key</div>
+
+      <div class="key-btn" id="layKeyBtn">
+        LẤY<br>KEY
+      </div>
+
+      <div class="note">🔒 Key chỉ dùng 1 lần — giữ bí mật, không chia sẻ</div>
+    </div>
+
+    <div class="guide">
+      <strong>📘 Hướng dẫn nhanh</strong>
+      <ol>
+        <li>Mở <b>Lấy Key</b> → truy cập link làm nhiệm vụ</li>
+        <li>Xong nhiệm vụ → Xác nhận → Tới <b>Trang Cloud Free</b></li>
+      </ol>
+    </div>
+
+    <div class="contact">
+      📧 Email liên hệ:
+      <span>nguyencongthanh10062011@gmail.com</span>
+    </div>
+  </div>
+
+  <!-- POPUP -->
+  <div id="popupKey">
+    <div class="popup-overlay" onclick="closePopup()"></div>
+
+    <div class="popup-box">
+      <button class="close-btn" onclick="closePopup()">✕</button>
+
+      <h2>Bạn cần phải lấy key để đến được trang web lấy Cloud Free</h2>
+
+      <a href="https://kingdev.site/" target="_blank" class="go-key">
+        🚀 Đến trang lấy key
+      </a>
+
+      <p class="desc">→ Bấm vào đây để tới trang lấy các bản cloud free</p>
+
+      <div class="discord">
+        <p>👾 <b>Discord NCT:</b> <a href="#">CHUA CO</a></p>
+        <p>👾 <b>Discord Cloud:</b> <a href="#">CHUA CO</a></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openPopup() {
+      document.getElementById("popupKey").style.display = "block";
+    }
+
+    function closePopup() {
+      document.getElementById("popupKey").style.display = "none";
+    }
+
+    document.getElementById("layKeyBtn").addEventListener("click", openPopup);
+  </script>
+</body>
+</html>
